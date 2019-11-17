@@ -2,7 +2,6 @@ package com.mumtaazstudio.newsappexample.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     private List<Article> articleArrayList;
     private Context context;
-    private OnRecyclerViewItemClickListener onRecyclerViewItemClickListener;
 
     public NewsAdapter(Context context) {
         this.context = context;

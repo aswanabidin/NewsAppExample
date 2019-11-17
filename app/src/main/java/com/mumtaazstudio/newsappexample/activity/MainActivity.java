@@ -33,21 +33,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         getSupportActionBar().setTitle("Berita Terkini");
+        initResource();
+        getResponseApi();
+    }
 
+    public void initResource() {
         progressBar = findViewById(R.id.progress_circular);
-        progressBar.setVisibility(View.VISIBLE);
-
         listItem = findViewById(R.id.rv_news);
         lin = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+
+        progressBar.setVisibility(View.VISIBLE);
+
         listItem.setLayoutManager(lin);
+
+    }
+
+    public void getResponseApi() {
 
         // Initialize api service
         final ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
         // Call function getLatestNews with country and apikey paramaters
-        Call<Response> call = apiService.getLatestNews("id", API_KEY);
+        Call<Response> call = apiService.getLatestNews("us", API_KEY);
 
         // Get response from api
         call.enqueue(new Callback<Response>() {
